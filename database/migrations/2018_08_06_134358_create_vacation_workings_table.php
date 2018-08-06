@@ -17,7 +17,7 @@ class CreateVacationWorkingsTable extends Migration
             $table->increments('id');
             $table->date('date');
             $table->float('hours')->unsigned();
-            $table->tinyInteger('from');
+            $table->time('from');
             $table->unsignedInteger('vac_id');
 
             $table->foreign('vac_id')->references('id')->on('vacations');
