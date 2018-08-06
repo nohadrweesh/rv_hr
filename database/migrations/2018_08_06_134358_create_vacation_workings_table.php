@@ -15,6 +15,13 @@ class CreateVacationWorkingsTable extends Migration
     {
         Schema::create('vacation_workings', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('date');
+            $table->float('hours')->unsigned();
+            $table->tinyInteger('from');
+            $table->unsignedInteger('vac_id');
+
+            $table->foreign('vac_id')->references('id')->on('vacations');
+
             $table->timestamps();
         });
     }
