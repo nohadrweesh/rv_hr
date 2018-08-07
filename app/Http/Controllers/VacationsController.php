@@ -156,4 +156,15 @@ class VacationsController extends Controller
     {
         //
     }
+
+    public function editVacationStatus(Request $request)
+    {
+        //
+
+        $vacation=Vacation::find($request['id']);
+        $cmd=$request['cmd'];
+        $vacation->status=$cmd;
+        $vacation->update();
+        return response()->json(['message'=>'updated successfully'],200);
+    }
 }

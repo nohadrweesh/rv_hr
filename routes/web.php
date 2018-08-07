@@ -21,6 +21,27 @@ Route::resource('vacations','VacationsController');
     return view('vacations/new_vacation');
 });*/
 Route::post('/editStatus',function(\Illuminate\Http\Request $request){
-	return  response()->json(['message'=>$request['cmd']]);
+
+	//return  response()->json(['message'=>$request['cmd']]);
+	$vacation=App\Vacation::find($request['vacation_id']);
+        $cmd=$request['cmd'];
+        $prevStatus=$vacation->status;
+
+        
+        if(($prevStatus=='managerConfirmed'&&$cmd=='hrConfirmed')||
+        	($prevStatus=='hrConfirmed'&&$cmd=='managerConfirmed'))
+        	$vacation->status='confirmed';
+        else
+        	$vacation->status=$cmd;
+        $vacation->update();
+        return response()->json(['message'=>'updated successfully','status'=>$vacation->status]);
+	
+
 
 })->name('editStatus');
+
+/*Route::post('/editStatus',[
+
+'uses'=>'VacationsController@editVacationStatus',
+'as'=>'editStatus'
+]);*

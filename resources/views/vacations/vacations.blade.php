@@ -24,20 +24,25 @@
   <tbody>
 
     @foreach ($vacations as $vacation)
-    <tr id='{{$vacation->id}}'>
+    <tr id='{{$vacation->id}}'  data-toggle="modal" data-id='{{$vacation->id}}' data-target="#orderModal" >
       <th>{{$vacation->from}}  </th>
       <th>{{$vacation->to}}  </th>
       <th>{{$vacation->created_at}}  </th>
       <th>{{$vacation->title}}  </th>
       <th>{{$vacation->reason}}  </th>
-      <th>{{$vacation->availabilty}}  </th>
+      @if ($vacation->availabilty==0)
+        <th>Not available To work</th>
+      @else
+        <th>Available To work </th>
+      @endif
+      
       <th class="status status-pending">{{$vacation->status}}  </th>
       <td>
         
-          <button type="button" class="btn btn-success btn-sm" id="mgr_confirm">Mgr Confirm</button>
-          <button type="button" class="btn btn-success btn-sm" id="hr_confirm">Hr Confirm</button>
-          <button type="button" class="btn btn-danger btn-sm" id="reject">Reject</button>
-          <button type="button" class="btn btn-info btn-sm" id="cancel">Cancel</button>
+          <button type="button" class="btn btn-success btn-sm" id="managerConfirmed">Mgr Confirm</button>
+          <button type="button" class="btn btn-success btn-sm" id="hrConfirmed">Hr Confirm</button>
+          <button type="button" class="btn btn-danger btn-sm" id="rejected">Reject</button>
+          <button type="button" class="btn btn-info btn-sm" id="canceled">Cancel</button>
         
 
 
@@ -47,6 +52,37 @@
    
   </tbody>
     </table>
+
+    <!-- Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Vacation Working Hours</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Hours</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody></tbody></table>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 
 
 @stop
