@@ -1,10 +1,14 @@
 @extends('layouts.master')
+@section('css_files')
+@stop
+
 @section('content')
 
 
+<h1>Request A New Vacation</h1>
 
-
-<form>
+<form method="POST" action="/vacations">
+  {{ csrf_field() }}
   <div class="raw">
     <div class="form-group">
       <label for="fromInput">From</label>
@@ -29,7 +33,7 @@
      Availability To Work : <br>
     <label class="switch">
 
-      <input type="checkbox" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" checked>
+      <input type="checkbox" name="availability" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" checked>
       <span class="slider round"></span>
 
     </label>
@@ -48,33 +52,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">02/09</th>
-      <td><input type="text" value="4"></td>
-      <td> <input type="text" value=""></td>
-      <td> <input type="text" value=""></td>
-    </tr>
-    <tr>
-      <th scope="row">02/09</th>
-      <td><input type="text" value="2"></td>
-      <td> <input type="text" value="10am"></td>
-      <td> <input type="text" value="12am"></td>
-      
-    </tr>
-    <tr>
-      <th scope="row">04/09</th>
-      <td><input type="text" value="0"></td>
-      <td>
-        <input type="text" value="" disabled>
-        <br>
-        <small>working hours is zero</small>
-      </td>
-      <td>
-        <input type="text" value="" disabled>
-        <br>
-        <small>working hours is zero</small>
-      </td>
-    </tr>
+       
   </tbody>
     </table>
   </div>
@@ -83,4 +61,6 @@
 
 
 @stop
-@section('content')
+@section('scripts')
+<script src="{{ asset('js/vacation.js') }}"></script>
+@stop

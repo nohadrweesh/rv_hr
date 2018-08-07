@@ -14,7 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::get('/vacation','VacationsController@'
+Route::resource('vacations','VacationsController');
 
-Route::get('/vacation', function () {
+/*Route::get('/vacation', function () {
     return view('vacations/new_vacation');
-});
+});*/
+Route::post('/editStatus',function(\Illuminate\Http\Request $request){
+	return  response()->json(['message'=>$request['cmd']]);
+
+})->name('editStatus');

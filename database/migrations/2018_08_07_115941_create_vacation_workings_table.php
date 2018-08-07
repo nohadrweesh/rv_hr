@@ -17,10 +17,10 @@ class CreateVacationWorkingsTable extends Migration
             $table->increments('id');
             $table->date('date');
             $table->float('hours')->unsigned();
-            $table->time('from');
-            $table->unsignedInteger('vac_id');
+            $table->time('from')->nullable();
+            $table->unsignedInteger('vacation_id');
 
-            $table->foreign('vac_id')->references('id')->on('vacations');
+            //$table->foreign('vacation_id')->references('id')->on('vacations');
 
             $table->timestamps();
         });
