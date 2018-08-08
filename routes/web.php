@@ -53,3 +53,7 @@ Route::get('/getVacationData',function(\Illuminate\Http\Request $request){
 
 })->name('getVacationData');
 
+Route::get('/test',function(){
+	return view('test');
+});
+

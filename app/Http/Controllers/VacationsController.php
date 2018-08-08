@@ -43,7 +43,7 @@ class VacationsController extends Controller
     {
         //$availability='off';
         //
-        //dd($request);
+        dd($request);
          /*echo $vacFrom= $request['vacFrom'];
          echo $vacTo=$request['vacTo'];
          echo $title=$request['title'];

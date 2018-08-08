@@ -9,6 +9,36 @@
 
 <form method="POST" action="/vacations">
   {{ csrf_field() }}
+
+        <div class="row">
+          <div class='col-sm-4'>
+              <div class="form-group ">
+                  
+                  <div class='input-group date' >
+                    <label for="datepicker_start">From :  </label>
+                      <input type='text' class="form-control" id='datepicker_start' name="datepicker_start" />
+                      
+                  </div>
+                  
+              </div>
+          </div>
+          
+          <div class='col-sm-4 '>
+              <div class="form-group ">
+                  
+                  <div class='input-group date' >
+                    <label for="datepicker_end">To :  </label>
+                      <input type='text' class="form-control" id='datepicker_end' name="datepicker_end"/>
+                      
+                  </div>
+                  
+              </div>
+          </div>
+       
+        </div>
+        
+    
+
   <div class="raw">
     <div class="form-group">
       <label for="fromInput">From</label>
@@ -63,4 +93,37 @@
 @stop
 @section('scripts')
 <script src="{{ asset('js/vacation.js') }}"></script>
+
+<script type="text/javascript">
+
+  $(function() {
+
+       /* global setting */
+      var datepickersOpt = {
+          dateFormat: 'dd-mm-yy',
+          minDate   : 0
+      }
+
+      $("#datepicker_start").datepicker($.extend({
+          onSelect: function() {
+              var minDate = $(this).datepicker('getDate');
+              
+              minDate.setDate(minDate.getDate()); //add two days
+              $("#datepicker_end").datepicker( "option", "minDate", minDate);
+          }
+      },datepickersOpt));
+
+      $("#datepicker_end").datepicker($.extend({
+          onSelect: function() {
+              var maxDate = $(this).datepicker('getDate');
+             
+              maxDate.setDate(maxDate.getDate());
+              $("#datepicker_start").datepicker( "option", "maxDate", maxDate);
+          }
+      },datepickersOpt));
+  }); 
+ 
+    
+    
+</script>  
 @stop
