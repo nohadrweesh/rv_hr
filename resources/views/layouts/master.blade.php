@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <link rel="stylesheet" href="/resources/demos/style.css">
+      <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -20,6 +20,10 @@
         <!-- Styles -->
         <style>
             /* The switch - the box around the slider */
+
+            body{
+              font-size:12px;
+            }
 .switch {
   position: relative;
   display: inline-block;

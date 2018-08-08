@@ -43,7 +43,7 @@ class VacationsController extends Controller
     {
         //$availability='off';
         //
-        dd($request);
+        //dd($request);
          /*echo $vacFrom= $request['vacFrom'];
          echo $vacTo=$request['vacTo'];
          echo $title=$request['title'];
@@ -51,8 +51,11 @@ class VacationsController extends Controller
           print_r( $working_hours=$request['working_hours']);
          print_r( $working_hours_from=$request['working_hours_from']);
          print_r( $working_hours_to=$request['working_hours_to']);*/
-        $vacFrom= $request['vacFrom'];
-         $vacTo=$request['vacTo'];
+        //$vacFrom= $request['vacFrom'];
+         //$vacTo=$request['vacTo'];
+
+         $vacFrom= date($request['datepicker_start']);
+         $vacTo=date($request['datepicker_end']);
          $title=$request['title'];
          $reason=$request['reason'];
           $working_hours=$request['working_hours'];
