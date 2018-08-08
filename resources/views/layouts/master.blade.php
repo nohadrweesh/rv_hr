@@ -10,8 +10,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        @yield('css_files')
 
 
+        
         <!-- Styles -->
         <style>
             /* The switch - the box around the slider */
@@ -77,7 +79,7 @@ input:checked + .slider:before {
     </head>
     <body>
         <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">RoboVics</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -92,8 +94,8 @@ input:checked + .slider:before {
           Vacations
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">New Vacation</a>
-          <a class="dropdown-item" href="#">My Vacations</a>
+          <a class="dropdown-item" href="/vacations/create">New Vacation</a>
+          <a class="dropdown-item" href="/vacations">My Vacations</a>
          
         </div>
       </li>

@@ -8,7 +8,7 @@
 <h1>My Vacations</h1>
 
 
-<table class="table table-striped">
+<table id="vacations-table" class="table table-striped">
   <thead>
     <tr>
       <th scope="col">From</th>
@@ -24,13 +24,13 @@
   <tbody>
 
     @foreach ($vacations as $vacation)
-    <tr id='{{$vacation->id}}'  data-toggle="modal" data-id='{{$vacation->id}}' data-target="#orderModal" >
+    <tr id='{{$vacation->id}}'  data-toggle="modal" data-target="#orderModal"> 
       <th>{{$vacation->from}}  </th>
       <th>{{$vacation->to}}  </th>
       <th>{{$vacation->created_at}}  </th>
       <th>{{$vacation->title}}  </th>
       <th>{{$vacation->reason}}  </th>
-      @if ($vacation->availabilty==0)
+       @if ($vacation->availabilty===0)
         <th>Not available To work</th>
       @else
         <th>Available To work </th>
@@ -54,33 +54,41 @@
     </table>
 
     <!-- Modal -->
+
 <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Vacation Working Hours</h5>
+        
+        <h5 class="modal-title">Vacation Working Hours</h5>
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Hours</th>
-      <th scope="col">From</th>
-      <th scope="col">To</th>
-      
-      
-    </tr>
-  </thead>
-  <tbody></tbody></table>
+        <table id="vacationWorkingsTable" class="table table-striped">
+          <thead>
+            <!--<tr>
+              <th scope="col">Date</th>
+              <th scope="col">Hours</th>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              
+              
+            </tr>-->
+          </thead>
+          <tbody>
+            
+          </tbody>
+
+        </table>
       </div>
       
     </div>
   </div>
 </div>
+ 
 
 
 
@@ -91,6 +99,8 @@
   
   var token='{{csrf_token()}}';
   var url='{{route('editStatus')}}';
+  var url1='{{route('getVacationData')}}';
 </script>
+
 <script src="{{ asset('js/vacations.js') }}"></script>
 @stop

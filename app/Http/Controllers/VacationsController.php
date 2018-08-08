@@ -121,6 +121,12 @@ class VacationsController extends Controller
     public function show($id)
     {
         //
+
+
+        $vacationWorkings=Vacation::find($id)->vacationWorkings;
+         //$details=$vacation->vacationWorkings();
+         //dd($vacations);
+        return view ('vacations.vacation_details',compact('vacationWorkings'));
     }
 
     /**

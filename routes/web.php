@@ -40,8 +40,16 @@ Route::post('/editStatus',function(\Illuminate\Http\Request $request){
 
 })->name('editStatus');
 
-/*Route::post('/editStatus',[
+Route::get('/getVacationData',function(\Illuminate\Http\Request $request){
 
-'uses'=>'VacationsController@editVacationStatus',
-'as'=>'editStatus'
-]);*
+	$vacation=App\Vacation::find($request['vacation_id']);
+        
+    $details=$vacation->vacationWorkings;
+        
+        return response()->json(['availability'=>$vacation->availabilty,'workingHours'=>$details]);
+       // return response()->json($details);
+	
+
+
+})->name('getVacationData');
+
